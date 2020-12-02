@@ -1,18 +1,16 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import authStyles from "../../styles/authStyles";
+import authStyles from "../../../styles/authStyles";
 import TextField from "@material-ui/core/TextField";
-import logo from "../../assets/images/instaLogo.png";
+import logo from "../../../assets/images/instaLogo.png";
 import {
   Button,
   Card,
   CardActions,
   CardContent,
   Grid,
-  Paper,
   Typography,
 } from "@material-ui/core";
-import userService from "../../services/UsersService";
+import userService from "../../../services/UsersService";
 
 const Register = (props) => {
   const [name, setName] = React.useState("");
@@ -83,6 +81,17 @@ const Register = (props) => {
               className={authClasses.btn}
               variant="contained"
               color="primary"
+              onClick={(e) => {
+                userService
+                  .register(name, email, password)
+                  .then((res) => {
+                    props.history.push("/login");
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  });
+                // window.location.href = "/login";
+              }}
             >
               Sign Up
             </Button>

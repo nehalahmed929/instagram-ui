@@ -4,25 +4,25 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import Login from "./components/auth/login";
-import Register from "./components/auth/Register";
+import Login from "./components/screens/auth/login";
+import Register from "./components/screens/auth/Register";
+import Home from "./components/screens/Home";
 import NotFound from "./components/NotFound";
+import Navbar from "./components/smallComponents/Navbar";
 
 function App() {
   return (
     <Router>
-      <div>
-        <div style={{ padding: "10px" }}>
-          <Switch>
-            <Route path="/not-found" component={NotFound} />
+      <Navbar />
+      <Switch>
+        <Route path="/not-found" component={NotFound} />
 
-            <Route path="/login" component={Login} />
-            <Route path="/" component={Register} />
+        <Route path="/login" component={Login} />
+        <Route path="/home" component={Home} />
+        <Route path="/" component={Register} />
 
-            <Redirect to="not-found" />
-          </Switch>
-        </div>
-      </div>
+        <Redirect to="not-found" />
+      </Switch>
     </Router>
   );
 }
