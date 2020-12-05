@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       margin: theme.spacing(1),
     },
+    backgroundColor: "#fafafa",
   },
 
   container: {
@@ -35,6 +36,15 @@ const useStyles = makeStyles((theme) => ({
 
   card: {
     padding: 10,
+  },
+
+  column: {
+    alignSelf: "center",
+    marginTop: "90px !important",
+  },
+
+  alttAuth: {
+    marginTop: "40px !important",
   },
 
   input: {

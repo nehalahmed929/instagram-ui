@@ -7,8 +7,9 @@ class PostsService extends GenericService {
   addPost = (data) => {
     console.log("addpost : " + data);
     const formData = new FormData();
-    formData.append("file", data.image);
+    formData.append("image", data.image);
     formData.append("caption", data.caption);
+    formData.append("userId", data.usrId);
     const config = {
       headers: {
         "content-type": "multipart/form-data",

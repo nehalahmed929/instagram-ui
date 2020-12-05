@@ -9,20 +9,17 @@ import {
   Menu,
   InputBase,
   Typography,
+  Avatar,
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+
 import { withRouter } from "react-router";
 import userService from "../../services/UsersService";
 import navbarStyles from "../../styles/navbarStyles";
+import logo from "../../assets/images/instaLogo.png";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
 import { AiOutlineHome, AiOutlineCompass } from "react-icons/ai";
 import { IoPaperPlaneOutline, IoPaperPlane } from "react-icons/io5";
-import NotificationsIcon from "@material-ui/icons/Notifications";
-import MoreIcon from "@material-ui/icons/MoreVert";
-import MenuIcon from "@material-ui/icons/Menu";
 
 const Navbar = (props) => {
   const classes = navbarStyles();
@@ -52,16 +49,23 @@ const Navbar = (props) => {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem
+        onClick={() => {
+          userService.logout();
+          handleMenuClose();
+          window.location.href = "/login";
+        }}
+      >
+        Logout
+      </MenuItem>
     </Menu>
   );
 
   return (
     <div className={classes.grow}>
-      <AppBar position="sticky" color="white" className={classes.appbar}>
+      <AppBar position="fixed" color="white" className={classes.appbar}>
         <Toolbar>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Instagram
-          </Typography>
+          <img src={logo} className={classes.logo} alt="" />
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -100,7 +104,10 @@ const Navbar = (props) => {
               onClick={handleProfileMenuOpen}
               color="black"
             >
-              <AccountCircle />
+              <Avatar
+                aria-label="recipe"
+                src="https://i.imgur.com/RP1Z4WT.jpg"
+              />
             </IconButton>
           </div>
         </Toolbar>

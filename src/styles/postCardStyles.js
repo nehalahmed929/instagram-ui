@@ -3,8 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 600,
+    maxWidth: "450px",
     marginTop: 30,
+    width: "100%",
   },
   cardImage: {
     height: 0,

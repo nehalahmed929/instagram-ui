@@ -13,6 +13,13 @@ const useStyles = makeStyles((theme) => ({
   authButtons: {
     marginLeft: "auto",
   },
+  logo: {
+    // width: "70%",
+    // maxHeight: "50px",
+    width: "150px",
+    // marginLeft: "auto",
+    // marginRight: "auto",
+  },
 
   registerButton: {
     marginLeft: "10px",

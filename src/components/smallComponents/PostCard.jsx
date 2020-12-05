@@ -44,7 +44,7 @@ const PostCard = (props) => {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
+        title={props.post.userName}
         subheader="September 14, 2016"
       />
       <CardMedia

@@ -11,6 +11,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import userService from "../../../services/UsersService";
+import { Link } from "react-router-dom";
 
 const Register = (props) => {
   const [email, setEmail] = React.useState("");
@@ -25,7 +26,7 @@ const Register = (props) => {
       justify="center"
       alignItems="center"
     >
-      <Grid item xs={4}>
+      <Grid item xs={6} md={4} className={authClasses.column}>
         <Card className={authClasses.card} variant="outlined">
           <CardContent className={authClasses.container}>
             <img src={logo} className={authClasses.logo} alt="" />
@@ -82,10 +83,16 @@ const Register = (props) => {
             >
               Login
             </Button>
+            <Typography
+              className={authClasses.alttAuth}
+              color="textSecondary"
+              align="center"
+              variant="body1"
+              gutterBottom
+            >
+              Dont have an acount? <Link to="/register">Sign Up</Link>
+            </Typography>
           </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
-          </CardActions>
         </Card>
       </Grid>
     </Grid>

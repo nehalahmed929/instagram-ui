@@ -26,6 +26,17 @@ const useStyles = makeStyles((theme) => ({
   mt: {
     marginTop: 10,
   },
+
+  root: {
+    marginTop: 50,
+    backgroundColor: "#fafafa",
+  },
+
+  postsCol: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
 }));
 
 export default useStyles;
