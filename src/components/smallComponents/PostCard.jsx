@@ -4,28 +4,20 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { FaRegComment } from "react-icons/fa";
 import { IoPaperPlaneOutline, IoBookmarkOutline } from "react-icons/io5";
 import { AiOutlineHeart } from "react-icons/ai";
-import TextField from "@material-ui/core/TextField";
 import {
   Avatar,
-  Button,
   Card,
   CardActions,
   CardContent,
   CardHeader,
   CardMedia,
   Divider,
-  Grid,
-  Icon,
   IconButton,
   InputBase,
   Typography,
 } from "@material-ui/core";
-import userService from "../../services/UsersService";
 
 const PostCard = (props) => {
-  const [name, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-
   const postCardClasses = postCardStyles(props);
   return (
     <Card className={postCardClasses.root}>

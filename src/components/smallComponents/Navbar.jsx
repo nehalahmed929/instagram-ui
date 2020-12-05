@@ -2,13 +2,11 @@ import React from "react";
 import {
   AppBar,
   Badge,
-  Button,
   IconButton,
   Toolbar,
   MenuItem,
   Menu,
   InputBase,
-  Typography,
   Avatar,
 } from "@material-ui/core";
 
@@ -17,9 +15,8 @@ import userService from "../../services/UsersService";
 import navbarStyles from "../../styles/navbarStyles";
 import logo from "../../assets/images/instaLogo.png";
 import SearchIcon from "@material-ui/icons/Search";
-import AccountCircle from "@material-ui/icons/AccountCircle";
 import { AiOutlineHome, AiOutlineCompass } from "react-icons/ai";
-import { IoPaperPlaneOutline, IoPaperPlane } from "react-icons/io5";
+import { IoPaperPlaneOutline } from "react-icons/io5";
 
 const Navbar = (props) => {
   const classes = navbarStyles();
