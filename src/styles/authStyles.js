@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   column: {
     alignSelf: "center",
     marginTop: "90px !important",
-    maxWidth: "450px",
+    maxWidth: "450px !important",
   },
 
   alttAuth: {
