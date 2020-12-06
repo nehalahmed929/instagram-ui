@@ -26,7 +26,7 @@ const Register = (props) => {
       justify="center"
       alignItems="center"
     >
-      <Grid item xs={6} md={4} className={authClasses.column}>
+      <Grid item xs={12} className={authClasses.column}>
         <Card className={authClasses.card} variant="outlined">
           <CardContent className={authClasses.container}>
             <img src={logo} className={authClasses.logo} alt="" />
