@@ -1,13 +1,61 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.instagram-heart {
+  width: 184px;
+  height: 162px;
+  display: flex;
+  user-select: none;
+  align-items: center;
+  justify-content: center;
+  /* position: absolute; */
+
+  /* margin-left: 17%; */
+  /* background: url("https://imgur.com/rksyGE8.png") no-repeat center/contain; */
+  opacity: 0;
+  transform: scale(0);
+  /* z-index: 1200; */
+}
+
+.animate-heart {
+  animation-duration: 1000ms;
+  animation-name: like-heart-animation;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes like-heart-animation {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  15% {
+    opacity: 0.9;
+    transform: scale(1.2);
+  }
+  30% {
+    transform: scale(0.95);
+  }
+  45%,
+  80% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+}
+
+.show {
+  display: block;
+}
+.hide {
+  display: none;
 }

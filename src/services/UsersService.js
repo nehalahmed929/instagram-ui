@@ -5,6 +5,11 @@ class UsersService extends GenericService {
   constructor() {
     super();
   }
+
+  getUsers = () => {
+    return this.get("users");
+  };
+
   login = (email, password) => {
     return new Promise((res, rej) => {
       this.post("users/login", { email, password })

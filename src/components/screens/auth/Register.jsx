@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import userService from "../../../services/UsersService";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Register = (props) => {
   const [name, setName] = React.useState("");
@@ -90,7 +91,9 @@ const Register = (props) => {
                     props.history.push("/login");
                   })
                   .catch((err) => {
-                    console.log(err);
+                    toast(err.response.data, {
+                      position: toast.POSITION.TOP_LEFT,
+                    });
                   });
                 // window.location.href = "/login";
               }}

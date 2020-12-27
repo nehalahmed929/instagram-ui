@@ -85,7 +85,11 @@ const Navbar = (props) => {
             </IconButton>
             <IconButton aria-label="show 17 new notifications" color="black">
               <Badge badgeContent={17} color="secondary">
-                <IoPaperPlaneOutline />
+                <IoPaperPlaneOutline
+                  onClick={() => {
+                    props.history.push("/messages");
+                  }}
+                />
               </Badge>
             </IconButton>
             <IconButton aria-label="show 17 new notifications" color="black">
