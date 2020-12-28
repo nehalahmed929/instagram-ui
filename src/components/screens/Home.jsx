@@ -226,7 +226,7 @@ const Home = (props) => {
                         className={homeClasses.avatartxtPrimary}
                         color="textPrimary"
                       >
-                        {loggedInUser.name}
+                        {loggedInUser ? loggedInUser.name : false}
                       </Typography>
                     </Link>
                   }

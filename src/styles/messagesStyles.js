@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     width: "100%",
-    height: 400,
+    height: 500,
     maxWidth: 940,
     border: "solid 1px",
     backgroundColor: "#fff",
@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
   rightColumn: {
     width: "70%",
+    // height: "100%",
   },
 
   loggedInUser: {
@@ -78,6 +79,23 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "space-evenly",
     minWidth: 350,
+  },
+
+  modalUser: {
+    display: "flex",
+    alignItems: "center",
+    borderBottom: "solid 1px #cccccc",
+    cursor: "pointer",
+  },
+  modalUsers: {
+    overflowY: "scroll",
+    marginTop: 20,
+    height: 300,
+  },
+
+  modalUserName: {
+    marginLeft: 15,
+    fontWeight: 600,
   },
 }));
 

@@ -8,6 +8,10 @@ class ChatUserService extends GenericService {
   getChatUsers = (data) => {
     return this.post("chatUsers/whereChat", data);
   };
+
+  getChatsWhereUser = (data) => {
+    return this.post("chatUsers/whereUser", data);
+  };
 }
 
 let chatUserService = new ChatUserService();

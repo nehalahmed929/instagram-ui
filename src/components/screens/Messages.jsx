@@ -9,7 +9,6 @@ import {
   ListItemText,
   Typography,
 } from "@material-ui/core";
-
 import Auth from "./auth/Auth";
 import { Link } from "react-router-dom";
 import friendshipService from "../../services/FrienshipsService";
@@ -33,17 +32,17 @@ const Messages = (props) => {
   const loggedInUser = userService.getLoggedInUser();
 
   const getChats = () => {
-    chatService
-      .getChats()
+    chatUserService
+      .getChatsWhereUser({ userId: loggedInUser._id })
       .then((res) => {
-        let chatss = res;
+        let chatss = res.data;
 
         chatss.map((item, index) => {
           chatUserService
-            .getChatUsers({ chatId: item._id })
+            .getChatUsers({ chatId: item.chat._id })
             .then((res) => {
               // console.log(res.data);
-
+              console.log(res);
               setChats(res.data);
             })
             .catch((err) => {
@@ -61,7 +60,7 @@ const Messages = (props) => {
     userService
       .getUsers()
       .then((res) => {
-        setUsers(res);
+        setUsers(res.users);
       })
       .catch((err) => {
         console.log(err);
@@ -103,20 +102,37 @@ const Messages = (props) => {
               <div className={messageClasses.paper}>
                 <div>Send New Message to</div>
                 <div>
-                  <div className={classes.modalUsers}>
+                  <div className={messageClasses.modalUsers}>
                     {users.map((item, index) => {
-                      return (
-                        <>
-                          <Avatar
-                            alt={item.name}
-                            className={messageClasses.modalAvatar}
-                            src="/static/images/avatar/1.jpg"
-                          />
-                          <h5 className={messageClasses.modalUserName}>
-                            {item.name}
-                          </h5>
-                        </>
-                      );
+                      if (!(item._id === loggedInUser._id)) {
+                        return (
+                          <div
+                            className={messageClasses.modalUser}
+                            onClick={() => {
+                              setChatUser(item);
+                              let chatID = chats.find(
+                                (chat) => chat.user._id === item._id
+                              );
+                              chatID === undefined
+                                ? setChatId(null)
+                                : setChatId(chatID.chat);
+                              console.log(
+                                chats.find((chat) => chat.user._id === item._id)
+                              );
+                              handleClose();
+                            }}
+                          >
+                            <Avatar
+                              alt={item.name}
+                              className={messageClasses.modalAvatar}
+                              src={item.imageUrl}
+                            />
+                            <h5 className={messageClasses.modalUserName}>
+                              {item.name}
+                            </h5>
+                          </div>
+                        );
+                      }
                     })}
                   </div>
                 </div>
@@ -138,39 +154,41 @@ const Messages = (props) => {
                 <div>
                   <List className={messageClasses.avatar}>
                     {chats.map((item, index) => {
-                      return (
-                        <ListItem
-                          alignItems="center"
-                          className={messageClasses.p0}
-                          onClick={() => {
-                            setChatUser(item.user);
-                            setChatId(item._id);
-                          }}
-                        >
-                          <ListItemAvatar>
-                            <Avatar
-                              alt={item.user.name}
-                              src="/static/images/avatar/1.jpg"
-                              size="medium"
-                              className={messageClasses.avatarImg}
+                      if (!(item.user._id === loggedInUser._id)) {
+                        return (
+                          <ListItem
+                            alignItems="center"
+                            className={messageClasses.p0}
+                            onClick={() => {
+                              setChatUser(item.user);
+                              setChatId(item.chat);
+                            }}
+                          >
+                            <ListItemAvatar>
+                              <Avatar
+                                alt={item.user.name}
+                                src="/static/images/avatar/1.jpg"
+                                size="medium"
+                                className={messageClasses.avatarImg}
+                              />
+                            </ListItemAvatar>
+                            <ListItemText
+                              primary={
+                                <Link className={messageClasses.myLink}>
+                                  <Typography
+                                    component="span"
+                                    variant="body2"
+                                    className={messageClasses.avatartxtPrimary}
+                                    color="textPrimary"
+                                  >
+                                    {item.user.name}
+                                  </Typography>
+                                </Link>
+                              }
                             />
-                          </ListItemAvatar>
-                          <ListItemText
-                            primary={
-                              <Link className={messageClasses.myLink}>
-                                <Typography
-                                  component="span"
-                                  variant="body2"
-                                  className={messageClasses.avatartxtPrimary}
-                                  color="textPrimary"
-                                >
-                                  {item.user.name}
-                                </Typography>
-                              </Link>
-                            }
-                          />
-                        </ListItem>
-                      );
+                          </ListItem>
+                        );
+                      }
                     })}
                   </List>
                 </div>

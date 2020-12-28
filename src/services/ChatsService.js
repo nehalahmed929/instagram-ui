@@ -5,8 +5,8 @@ class ChatsService extends GenericService {
     super();
   }
 
-  getChats = () => {
-    return this.get("chats");
+  getChats = (data) => {
+    return this.post("loggedInUserchats", data);
   };
 }
 
