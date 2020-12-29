@@ -61,7 +61,7 @@ const Home = (props) => {
     userService
       .getUsers()
       .then((res) => {
-        setUsers(res.users);
+        setUsers(res.users.reverse());
       })
       .catch((err) => {
         console.log(err.response.data);
@@ -252,7 +252,7 @@ const Home = (props) => {
                 {users.map((item, index) => {
                   return item._id === loggedInUser._id ? (
                     false
-                  ) : (
+                  ) : index < 5 ? (
                     <SidebarUser
                       user={{
                         id: item._id,
@@ -261,6 +261,8 @@ const Home = (props) => {
                       }}
                       loggedInUserId={loggedInUser._id}
                     />
+                  ) : (
+                    false
                   );
                 })}
               </List>
