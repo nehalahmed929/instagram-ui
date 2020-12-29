@@ -11,26 +11,24 @@ import {
 } from "@material-ui/core";
 import Auth from "./auth/Auth";
 import { Link } from "react-router-dom";
-import friendshipService from "../../services/FrienshipsService";
 import { BiMessageEdit } from "react-icons/bi";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import userService from "../../services/UsersService";
-import ChatModule from "../smallComponents/ChatModule";
-import chatService from "../../services/ChatsService";
+import XchatModule from "../smallComponents/XchatModule";
 import chatUserService from "../../services/ChatUserService";
-import messageService from "../../services/MessagesService";
 
 const Messages = (props) => {
   const [chatUser, setChatUser] = useState();
   const [chats, setChats] = useState([]);
   const [chatId, setChatId] = useState([]);
   const [users, setUsers] = useState([]);
-  const [open, setOpen] = React.useState(false);
+  const [newChat, setNewChat] = useState();
+  const [open, setOpen] = useState(false);
 
   const loggedInUser = userService.getLoggedInUser();
-
+  // alert("reddered");
   const getChats = () => {
     chatUserService
       .getChatsWhereUser({ userId: loggedInUser._id })
@@ -43,7 +41,7 @@ const Messages = (props) => {
             .then((res) => {
               // console.log(res.data);
               console.log(res);
-              setChats(res.data);
+              setChats((chats) => [...chats, ...res.data]);
             })
             .catch((err) => {
               console.log(err);
@@ -53,9 +51,12 @@ const Messages = (props) => {
       .catch((err) => {
         console.log(err);
       });
+    console.log(chats);
   };
-
-  useEffect(getChats, []);
+  const createNewChat = (user) => {
+    setNewChat(user);
+  };
+  useEffect(getChats, [loggedInUser._id, newChat]);
   useEffect(() => {
     userService
       .getUsers()
@@ -149,7 +150,7 @@ const Messages = (props) => {
                   onClick={handleOpen}
                 />{" "}
               </div>
-              <div calss>
+              <div>
                 <h4 className={messageClasses.heading}>Messages</h4>
                 <div>
                   <List className={messageClasses.avatar}>
@@ -196,7 +197,12 @@ const Messages = (props) => {
             </div>
             <div className={messageClasses.rightColumn}>
               {chatUser ? (
-                <ChatModule chatUser={chatUser} chatId={chatId} />
+                <XchatModule
+                  chatUser={chatUser}
+                  chatId={chatId}
+                  renderChats={getChats}
+                  chatsEmpty={setChats}
+                />
               ) : (
                 false
               )}
