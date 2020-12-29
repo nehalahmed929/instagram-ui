@@ -13,10 +13,12 @@ import userService from "./services/UsersService";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Messages from "./components/screens/Messages";
+import Loader from "./components/smallComponents/Loader";
 
 function App() {
   return (
     <Router>
+      <Loader />
       <div>
         <ToastContainer />
       </div>

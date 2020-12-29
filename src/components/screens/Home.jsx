@@ -49,7 +49,7 @@ const Home = (props) => {
       .getPosts()
       .then((data) => {
         // console.log("inside products" + data);
-        setPosts(data.posts);
+        setPosts(data.posts.reverse());
         console.log("inside home :" + data.posts[0]._id);
       })
       .catch((error) => {
@@ -190,16 +190,20 @@ const Home = (props) => {
                   className={homeClasses.mt}
                   color="primary"
                   onClick={(e) => {
+                    let load = document.getElementById("my-loader");
+                    load.style.display = "block";
                     let usrId = userService.getLoggedInUser()._id;
                     postService
                       .addPost({ caption, image, usrId })
                       .then((res) => {
                         handleClose();
+                        load.style.display = "none";
                         toast("Posted successfully!", {
                           position: toast.POSITION.TOP_LEFT,
                         });
                       })
                       .catch((err) => {
+                        load.style.display = "none";
                         console.log(err);
                       });
                   }}

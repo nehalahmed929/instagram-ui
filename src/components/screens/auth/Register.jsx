@@ -20,7 +20,7 @@ const Register = (props) => {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [image, setImage] = React.useState("");
+  const [image, setImage] = React.useState(null);
 
   const authClasses = authStyles();
   return (
@@ -65,7 +65,6 @@ const Register = (props) => {
                 }}
               >
                 <AiFillPlusCircle size={50} color="#cccccc" />
-                <p>Select Image</p>
               </div>
               <Input
                 id="inputUserImg"
@@ -125,13 +124,17 @@ const Register = (props) => {
               variant="contained"
               color="primary"
               onClick={(e) => {
+                let load = document.getElementById("my-loader");
+                load.style.display = "block";
                 userService
-                  .register(name, email, password, image)
+                  .register({ name, email, password, image })
                   .then((res) => {
+                    load.style.display = "none";
                     props.history.push("/login");
                   })
                   .catch((err) => {
-                    toast(err.response.data, {
+                    load.style.display = "none";
+                    toast(err, {
                       position: toast.POSITION.TOP_LEFT,
                     });
                   });

@@ -59,7 +59,9 @@ const useStyles = makeStyles((theme) => ({
   },
 
   myImg: {
-    width: "50%",
+    width: "30%",
+    // height: "20%",
+    maxHeight: 100,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -68,12 +70,16 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "auto",
     marginBottom: 20,
     borderRadius: "50%",
-    minHeight: 200,
-    maxWidth: "450px",
+    minHeight: 100,
+    maxWidth: "350px",
     display: "none",
     transition: "ease-in",
   },
   imgIcon: {
+    width: "30%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginBottom: 20,
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -81,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
     border: "solid 1px",
     borderColor: "#cccccc",
     borderRadius: "50%",
-    minHeight: 200,
+    minHeight: 120,
     cursor: "pointer",
   },
 }));

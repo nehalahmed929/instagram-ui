@@ -71,15 +71,16 @@ const Register = (props) => {
               variant="contained"
               color="primary"
               onClick={(e) => {
+                let load = document.getElementById("my-loader");
+                load.style.display = "block";
                 userService
                   .login(email, password)
                   .then((data) => {
-                    // console.log(data);
-
-                    // console.log("success");
+                    load.style.display = "none";
                     window.location.href = "/";
                   })
                   .catch((err) => {
+                    load.style.display = "none";
                     toast(err.response.data, {
                       position: toast.POSITION.TOP_LEFT,
                     });

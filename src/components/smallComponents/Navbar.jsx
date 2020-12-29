@@ -17,6 +17,7 @@ import logo from "../../assets/images/instaLogo.png";
 import SearchIcon from "@material-ui/icons/Search";
 import { AiOutlineHome, AiOutlineCompass } from "react-icons/ai";
 import { IoPaperPlaneOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
   const classes = navbarStyles();
@@ -78,13 +79,20 @@ const Navbar = (props) => {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="black">
-              <Badge badgeContent={4} color="secondary">
+            <IconButton
+              aria-label="show 4 new mails"
+              color="black"
+              onClick={() => {
+                props.history.push("/");
+              }}
+            >
+              <Badge badgeContent={0} color="secondary">
                 <AiOutlineHome />
               </Badge>
             </IconButton>
+
             <IconButton aria-label="show 17 new notifications" color="black">
-              <Badge badgeContent={17} color="secondary">
+              <Badge badgeContent={0} color="secondary">
                 <IoPaperPlaneOutline
                   onClick={() => {
                     props.history.push("/messages");
@@ -93,7 +101,7 @@ const Navbar = (props) => {
               </Badge>
             </IconButton>
             <IconButton aria-label="show 17 new notifications" color="black">
-              <Badge badgeContent={17} color="secondary">
+              <Badge badgeContent={0} color="secondary">
                 <AiOutlineCompass />
               </Badge>
             </IconButton>
@@ -107,7 +115,7 @@ const Navbar = (props) => {
             >
               <Avatar
                 aria-label="recipe"
-                src="https://i.imgur.com/RP1Z4WT.jpg"
+                src={userService.getLoggedInUser().imageUrl}
               />
             </IconButton>
           </div>

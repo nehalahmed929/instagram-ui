@@ -25,12 +25,13 @@ class UsersService extends GenericService {
   };
 
   register = (data) => {
-    // console.log(data);
+    console.log(data);
     const formData = new FormData();
     formData.append("image", data.image);
     formData.append("email", data.email);
     formData.append("password", data.password);
     formData.append("name", data.name);
+    console.log(formData);
     const config = {
       headers: {
         "content-type": "multipart/form-data",

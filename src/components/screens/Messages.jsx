@@ -143,7 +143,7 @@ const Messages = (props) => {
           <div className={messageClasses.content}>
             <div className={messageClasses.leftColumn}>
               <div className={messageClasses.loggedInUser}>
-                nehalahmed929{" "}
+                {loggedInUser.name}
                 <BiMessageEdit
                   size={30}
                   className={messageClasses.newChatIcon}
