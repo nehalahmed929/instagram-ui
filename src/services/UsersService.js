@@ -24,9 +24,19 @@ class UsersService extends GenericService {
     });
   };
 
-  register = (name, email, password) => {
+  register = (data) => {
     // console.log(data);
-    return this.post("users/register", { name, email, password });
+    const formData = new FormData();
+    formData.append("image", data.image);
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+    formData.append("name", data.name);
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    };
+    return this.post("users/register", formData, config);
   };
 
   logout = () => {

@@ -101,7 +101,7 @@ const Home = (props) => {
                 key={index}
                 post={{
                   userName: post.user.name,
-                  userImg: "https://i.imgur.com/RP1Z4WT.jpg",
+                  userImg: post.user.imageUrl,
                   postImg: post.imageUrl,
                   caption: post.caption,
                   userId: userService.getLoggedInUser()._id,
@@ -215,7 +215,7 @@ const Home = (props) => {
             <List className={homeClasses.avatar}>
               <ListItem alignItems="center" className={homeClasses.p0}>
                 <ListItemAvatar>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                  <Avatar alt="Remy Sharp" src={loggedInUser.imageUrl} />
                 </ListItemAvatar>
                 <ListItemText
                   primary={
@@ -250,6 +250,7 @@ const Home = (props) => {
                       user={{
                         id: item._id,
                         name: item.name,
+                        imageUrl: item.imageUrl,
                       }}
                       loggedInUserId={loggedInUser._id}
                     />

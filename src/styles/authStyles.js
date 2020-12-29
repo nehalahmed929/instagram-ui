@@ -57,6 +57,33 @@ const useStyles = makeStyles((theme) => ({
   form: {
     marginTop: "30px",
   },
+
+  myImg: {
+    width: "50%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    // border: "solid 1px",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginBottom: 20,
+    borderRadius: "50%",
+    minHeight: 200,
+    maxWidth: "450px",
+    display: "none",
+    transition: "ease-in",
+  },
+  imgIcon: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    border: "solid 1px",
+    borderColor: "#cccccc",
+    borderRadius: "50%",
+    minHeight: 200,
+    cursor: "pointer",
+  },
 }));
 
 export default useStyles;

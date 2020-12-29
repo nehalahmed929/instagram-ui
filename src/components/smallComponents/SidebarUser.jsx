@@ -71,7 +71,7 @@ const SidebarUser = (props) => {
         <ListItemAvatar>
           <Avatar
             alt={props.user.name}
-            src="/static/images/avatar/1.jpg"
+            src={props.user.imageUrl}
             className={classes.avatarSmall}
           />
         </ListItemAvatar>

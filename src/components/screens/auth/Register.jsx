@@ -2,12 +2,14 @@ import React from "react";
 import authStyles from "../../../styles/authStyles";
 import TextField from "@material-ui/core/TextField";
 import logo from "../../../assets/images/instaLogo.png";
+import { AiFillPlusCircle } from "react-icons/ai";
 import {
   Button,
   Card,
   CardActions,
   CardContent,
   Grid,
+  Input,
   Typography,
 } from "@material-ui/core";
 import userService from "../../../services/UsersService";
@@ -18,6 +20,7 @@ const Register = (props) => {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [image, setImage] = React.useState("");
 
   const authClasses = authStyles();
   return (
@@ -43,6 +46,43 @@ const Register = (props) => {
               Sign up to see photos and videos from your friends.
             </Typography>
             <form className={authClasses.form} noValidate autoComplete="off">
+              <img
+                src=""
+                alt="Select Image"
+                id="my-user-img"
+                className={authClasses.myImg}
+                onClick={() => {
+                  let imgInput = document.getElementById("inputUserImg");
+                  imgInput.click();
+                }}
+              />
+              <div
+                className={authClasses.imgIcon}
+                id="user-imgIcon"
+                onClick={() => {
+                  let imgInput = document.getElementById("inputUserImg");
+                  imgInput.click();
+                }}
+              >
+                <AiFillPlusCircle size={50} color="#cccccc" />
+                <p>Select Image</p>
+              </div>
+              <Input
+                id="inputUserImg"
+                type="file"
+                style={{ display: "none" }}
+                onChange={(e) => {
+                  setImage(e.target.files[0]);
+                  let src = URL.createObjectURL(e.target.files[0]);
+                  let img = document.getElementById("my-user-img");
+                  let icon = document.getElementById("user-imgIcon");
+                  img.src = src;
+                  icon.style.display = "none";
+
+                  img.style.display = "flex";
+                  console.log(e.target.files[0]);
+                }}
+              ></Input>
               <TextField
                 id="outlined-basic"
                 className={authClasses.input}
@@ -86,7 +126,7 @@ const Register = (props) => {
               color="primary"
               onClick={(e) => {
                 userService
-                  .register(name, email, password)
+                  .register(name, email, password, image)
                   .then((res) => {
                     props.history.push("/login");
                   })
