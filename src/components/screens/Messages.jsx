@@ -31,7 +31,7 @@ const Messages = (props) => {
   // alert("reddered");
   const getChats = () => {
     chatUserService
-      .getChatsWhereUser({ userId: loggedInUser._id })
+      .getChatsWhereUser({ userId: loggedInUser ? loggedInUser._id : null })
       .then((res) => {
         let chatss = res.data;
 
@@ -53,10 +53,12 @@ const Messages = (props) => {
       });
     console.log(chats);
   };
+
   const createNewChat = (user) => {
     setNewChat(user);
   };
-  useEffect(getChats, [loggedInUser._id, newChat]);
+
+  useEffect(getChats, [loggedInUser ? loggedInUser._id : null, newChat]);
   useEffect(() => {
     userService
       .getUsers()
@@ -143,7 +145,7 @@ const Messages = (props) => {
           <div className={messageClasses.content}>
             <div className={messageClasses.leftColumn}>
               <div className={messageClasses.loggedInUser}>
-                {loggedInUser.name}
+                {loggedInUser ? loggedInUser.name : false}
                 <BiMessageEdit
                   size={30}
                   className={messageClasses.newChatIcon}

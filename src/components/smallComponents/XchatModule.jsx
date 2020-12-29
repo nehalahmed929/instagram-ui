@@ -8,6 +8,7 @@ import { InputBase } from "@material-ui/core";
 import { AiOutlineSend } from "react-icons/ai";
 import messageService from "../../services/MessagesService";
 import userService from "../../services/UsersService";
+import Auth from "../screens/auth/Auth";
 
 const useStyles = makeStyles((theme) => ({
   chatUser: {
@@ -160,7 +161,7 @@ const XchatModule = (props) => {
   };
   const classes = useStyles();
   return (
-    <>
+    <Auth>
       <div className={classes.root}>
         <div className={classes.chatUser}>
           <Avatar
@@ -206,7 +207,7 @@ const XchatModule = (props) => {
           />
         </div>
       </div>
-    </>
+    </Auth>
   );
 };
 

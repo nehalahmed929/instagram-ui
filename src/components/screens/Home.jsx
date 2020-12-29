@@ -219,7 +219,10 @@ const Home = (props) => {
             <List className={homeClasses.avatar}>
               <ListItem alignItems="center" className={homeClasses.p0}>
                 <ListItemAvatar>
-                  <Avatar alt="Remy Sharp" src={loggedInUser.imageUrl} />
+                  <Avatar
+                    alt="Remy Sharp"
+                    src={loggedInUser ? loggedInUser.imageUrl : false}
+                  />
                 </ListItemAvatar>
                 <ListItemText
                   primary={
