@@ -167,7 +167,7 @@ const XchatModule = (props) => {
           <Avatar
             alt={props.chatUser.name}
             className={classes.avatar}
-            src="/static/images/avatar/1.jpg"
+            src={props.chatUser.imageUrl}
           />
           <h5>{props.chatUser.name}</h5>
         </div>

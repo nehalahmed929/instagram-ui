@@ -57,6 +57,7 @@ const Register = (props) => {
                 id="outlined-basic"
                 className={authClasses.input}
                 label="Password"
+                type="password"
                 variant="outlined"
                 margin="dense"
                 value={password}

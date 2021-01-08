@@ -170,7 +170,7 @@ const Messages = (props) => {
                             <ListItemAvatar>
                               <Avatar
                                 alt={item.user.name}
-                                src="/static/images/avatar/1.jpg"
+                                src={item.user.imageUrl}
                                 size="medium"
                                 className={messageClasses.avatarImg}
                               />
